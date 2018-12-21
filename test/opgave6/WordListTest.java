@@ -42,7 +42,7 @@ public class WordListTest {
     public void testContructor1() {
         System.out.println("test 1: first constructor");
 
-        WordList planetsA = new WordList(new String[]{"Mars", "Aarde", "Venus"});
+        WordList planetsA = new WordList(new String[]{"Mars", "Aarde", "Mars", "Venus"});
         assertEquals(planetsA.size(), 3);
         assertEquals(planetsA.get(0), "Aarde");
         assertEquals(planetsA.get(1), "Mars");

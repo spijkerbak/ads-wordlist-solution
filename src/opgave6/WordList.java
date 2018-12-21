@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package opgave6;
 
 import java.util.ArrayList;
@@ -10,9 +6,9 @@ import java.util.Arrays;
 import java.util.List;
 
 class WordList {
-    // interne list: 
-    // - moet gesorteerd blijven na elke operatie
-    // - mag geen dubbele woorden bevatten
+    // internal list: 
+    // - must be kept sorted after every operation
+    // - may not contain double values
 
     private List<String> list;
 
@@ -30,6 +26,7 @@ class WordList {
 
     WordList(String[] input) {
         // bubble-sort the input array
+        // NOTE: THIS WILL MODIFY THE INPUT ARRAY
         for (int i = 0; i < input.length - 1; i++) {
             for (int j = 0; j < input.length - i - 1; j++) {
                 if (input[j + 1].compareTo(input[j]) < 0) {
@@ -39,9 +36,17 @@ class WordList {
                 }
             }
         }
-        list = Arrays.asList(input);
+        // copy array to list, eliminating double values
+        list = new ArrayList<>();
+        String last = null;
+        for(String word : input) {
+            if(!word.equals(last)) {
+                list.add(word);
+                last = word;
+            }
+        }
     }
-
+    
     WordList(WordList a, WordList b) {
         // merge-sort:
         list = new ArrayList<>();
